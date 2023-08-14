@@ -5,23 +5,18 @@
     
     <!-- Add Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    
-    <style>
-        /* Add custom styles here */
-    </style>
+
 </head>
 <body>
     <div class="container">
-        <h1 class="display-2">Device Type Checker</h1>
-        
-        <p class="display-4" id="deviceInfo">Checking device type...</p>
+        <div class="p-4 mt-4 bg-light rounded border">
+            <p class="display-4 mt-2 mb-2" id="deviceInfo">Checking device type...</p>
 
-        <h1 class="btn btn-primary w-100 p-4 fw-bold" onclick="checkAppInstallation()">Check Eyas Users App</h1>
+            <h1 style="font-size: 2rem;"
+            class="btn btn-primary w-100 p-4 fw-bold mt-2 rounded-pill" onclick="checkAppInstallation()">Dawnload Eyas Users</h1>
+        </div>
     </div>
-    
-    <!-- Add Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    
+
     <script>
         var deviceType = '';
         // JavaScript code to check the device type
@@ -40,22 +35,24 @@
         }
 
         function checkAppInstallation() {
-            // var androidLink = "https://play.google.com/store/apps/details?id=com.eyas.user";
-            var iosLink = "EyasUser://";
-            // Attempt to open the app's URL scheme
-            // if(deviceType == 'iOS')
-                window.location.href = iosLink;
-            // else if (deviceType == 'Android')
-                // window.location.href = androidLink;
-            
-            // If the page doesn't redirect, the app is not installed
-            // setTimeout(function() {
-            //     document.getElementById("result").innerText = "App is not installed";
-            // }, 500); // Adjust the delay as needed
-        }
+            var androidScheme = "https://play.google.com/store/apps/details?id=com.eyas.user";
+            var androidDawnload = "https://play.google.com/store/apps/details?id=com.eyas.user";
 
-        // Call the function when the page loads
-        // window.onload = checkAppInstallation;
+            var iosShceme = "EyasUser://";
+            var iosDawnload = "https://apps.apple.com/us/app/id1457498410";
+
+            if(deviceType == 'iOS')
+                window.location.href = iosShceme;
+            else if (deviceType == 'Android')
+                window.location.href = androidScheme;
+            
+            setTimeout(function() {
+                if(deviceType == 'iOS')
+                    window.location.href = iosDawnload;
+                else if (deviceType == 'Android')
+                    window.location.href = androidDawnload;
+            }, 500);
+        }
     </script>
 </body>
 </html>
