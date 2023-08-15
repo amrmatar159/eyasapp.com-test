@@ -42,17 +42,13 @@
             var iosDawnload = "https://apps.apple.com/us/app/id1457498410";
 
             try {
-                if (deviceType === 'iOS') {
-                    window.location.href = iosScheme;
-                } else if (deviceType === 'Android') {
-                    window.location.href = androidScheme;
-                }
+            if (deviceType === 'iOS') {
+                window.location.href = iosScheme;
+            } else if (deviceType === 'Android') {
+                window.location.href = androidScheme;
+            }
             } catch (error) {
-                if (deviceType === 'iOS') {
-                    window.location.href = iosDawnload;
-                } else if (deviceType === 'Android') {
-                    window.location.href = androidDawnload;
-                }
+                console.log("Link not opened");
             }
         }
     </script>
