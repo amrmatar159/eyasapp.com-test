@@ -43,18 +43,17 @@
 
             try {
             if (deviceType === 'iOS') {
-                window.location.href = iosScheme;
+                window.location.href = iosShceme;
             } else if (deviceType === 'Android') {
                 window.location.href = androidScheme;
             }
             } catch (error) {
-                alert(error);
-                // setTimeout(function() {
-                // if(deviceType == 'iOS')
-                //     window.location.href = iosDawnload;
-                // else if (deviceType == 'Android')
-                //     window.location.href = androidDawnload;
-                // }, 500);
+                setTimeout(function() {
+                if(deviceType == 'iOS')
+                    window.location.href = iosDawnload;
+                else if (deviceType == 'Android')
+                    window.location.href = androidDawnload;
+                }, 500);
             }
             
         }
