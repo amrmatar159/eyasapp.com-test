@@ -48,12 +48,13 @@
                 window.location.href = androidScheme;
             }
             } catch (error) {
-                setTimeout(function() {
-                if(deviceType == 'iOS')
-                    window.location.href = iosDawnload;
-                else if (deviceType == 'Android')
-                    window.location.href = androidDawnload;
-                }, 500);
+                alert(error);
+                // setTimeout(function() {
+                // if(deviceType == 'iOS')
+                //     window.location.href = iosDawnload;
+                // else if (deviceType == 'Android')
+                //     window.location.href = androidDawnload;
+                // }, 500);
             }
             
         }
