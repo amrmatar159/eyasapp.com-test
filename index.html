@@ -41,17 +41,21 @@
             var iosShceme = "EyasUser://";
             var iosDawnload = "https://apps.apple.com/us/app/id1457498410";
 
-            if(deviceType == 'iOS')
-                window.location.href = iosShceme;
-            else if (deviceType == 'Android')
+            try {
+            if (deviceType === 'iOS') {
+                window.location.href = iosScheme;
+            } else if (deviceType === 'Android') {
                 window.location.href = androidScheme;
-            
-            setTimeout(function() {
+            }
+            } catch (error) {
+                setTimeout(function() {
                 if(deviceType == 'iOS')
                     window.location.href = iosDawnload;
                 else if (deviceType == 'Android')
                     window.location.href = androidDawnload;
-            }, 500);
+                }, 500);
+            }
+            
         }
     </script>
 </body>
