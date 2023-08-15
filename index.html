@@ -35,27 +35,25 @@
         }
 
         function checkAppInstallation() {
-            var androidScheme = "https://play.google.com/store/apps/details?id=com.eyas.user";
+            var androidScheme = "geo://";
             var androidDawnload = "https://play.google.com/store/apps/details?id=com.eyas.user";
 
             var iosScheme = "EyasUser://";
             var iosDawnload = "https://apps.apple.com/us/app/id1457498410";
 
             try {
-            if (deviceType === 'iOS') {
-                window.location.href = iosScheme;
-            } else if (deviceType === 'Android') {
-                window.location.href = androidScheme;
-            }
+                if (deviceType === 'iOS') {
+                    window.location.href = iosScheme;
+                } else if (deviceType === 'Android') {
+                    window.location.href = androidScheme;
+                }
             } catch (error) {
-                setTimeout(function() {
-                if(deviceType == 'iOS')
+                if (deviceType === 'iOS') {
                     window.location.href = iosDawnload;
-                else if (deviceType == 'Android')
+                } else if (deviceType === 'Android') {
                     window.location.href = androidDawnload;
-                }, 500);
+                }
             }
-            
         }
     </script>
 </body>
