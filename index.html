@@ -51,7 +51,7 @@
         }
 
         function handleUrlChange(dawnloadLink) {
-            if(!window.location.href.includes('eyasuser') || !window.location.href.includes('geo')) {
+            if(!window.location.href.includes('eyasuser') && !window.location.href.includes('geo')) {
                 window.location.href = dawnloadLink;
             }
         }
