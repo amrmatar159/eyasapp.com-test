@@ -34,13 +34,13 @@
             document.getElementById("deviceInfo").innerText = `Device type: ${deviceType}`;
         }
 
+        var androidScheme = "geo://";
+        var androidDawnload = "https://play.google.com/store/apps/details?id=com.eyas.user";
+
+        var iosScheme = "EyasUser://";
+        var iosDawnload = "https://apps.apple.com/us/app/id1457498410";
+
         function checkAppInstallation() {
-            var androidScheme = "geo://";
-            var androidDawnload = "https://play.google.com/store/apps/details?id=com.eyas.user";
-
-            var iosScheme = "EyasUser://";
-            var iosDawnload = "https://apps.apple.com/us/app/id1457498410";
-
             if (deviceType === 'iOS') {
                 window.location.href = iosScheme;
                 handleUrlChange();
@@ -51,7 +51,10 @@
 
         function handleUrlChange() {
             if(!window.location.href.includes('eyasuser')) {
-                window.location.href = "https://play.google.com/store/apps/details?id=com.eyas.user";
+                window.location.href = iosDawnload;
+            }
+            else if(!window.location.href.includes('geo')) {
+                window.location.href = androidDawnload;
             }
         }
 
