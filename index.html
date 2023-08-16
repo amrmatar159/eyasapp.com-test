@@ -43,10 +43,14 @@
         function checkAppInstallation() {
             if (deviceType === 'iOS') {
                 window.location.href = iosScheme;
-                handleUrlChange(iosDawnload);
+                setTimeout(() => {
+                    handleUrlChange(iosDawnload);
+                }, "500");
             } else if (deviceType === 'Android') {
                 window.location.href = androidScheme;
-                handleUrlChange(androidDawnload);
+                setTimeout(() => {
+                    handleUrlChange(androidDawnload);
+                }, "500");
             }
         }
 
