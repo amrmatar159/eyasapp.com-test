@@ -43,18 +43,16 @@
         function checkAppInstallation() {
             if (deviceType === 'iOS') {
                 window.location.href = iosScheme;
-                handleUrlChange();
+                handleUrlChange(iosDawnload);
             } else if (deviceType === 'Android') {
                 window.location.href = androidScheme;
+                handleUrlChange(androidDawnload);
             }
         }
 
-        function handleUrlChange() {
-            if(!window.location.href.includes('eyasuser')) {
-                window.location.href = iosDawnload;
-            }
-            else if(!window.location.href.includes('geo')) {
-                window.location.href = androidDawnload;
+        function handleUrlChange(dawnloadLink) {
+            if(!window.location.href.includes('eyasuser') || !window.location.href.includes('geo')) {
+                window.location.href = dawnloadLink;
             }
         }
 
