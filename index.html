@@ -34,10 +34,10 @@
             document.getElementById("deviceInfo").innerText = `Device type: ${deviceType}`;
         }
 
-        var androidScheme = "geo://";
+        var androidScheme = "https://app.slack.com/client/T0287FWM6K0/D04QR81PREV";
         var androidDawnload = "https://play.google.com/store/apps/details?id=com.eyas.user";
 
-        var iosScheme = "EyasUser://";
+        var iosScheme = "https://app.slack.com/client/T0287FWM6K0/D04QR81PREV";
         var iosDawnload = "https://apps.apple.com/us/app/id1457498410";
 
         function checkAppInstallation() {
@@ -51,12 +51,10 @@
         }
 
         function handleUrlChange(dawnloadLink) {
-            if(!window.location.href.includes('eyasuser') && !window.location.href.includes('geo')) {
+            if(!window.location.href.includes('geo') || !window.location.href.includes('eyasapp')) {
                 window.location.href = dawnloadLink;
             }
         }
-
-        window.onpopstate = handleUrlChange;
         
     </script>
 </body>
