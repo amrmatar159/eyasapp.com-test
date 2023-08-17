@@ -32,25 +32,22 @@
         function checkAppInstallation() {
             var fallbackLink = '';
 
-            if (isiOS) {
+            try {
+                if (isiOS) {
+                fallbackLink = iosDawnload;
                 window.location = iosScheme;
 
-                fallbackLink = iosDawnload;
+                }
+                else if(isAndroid) {
+                    fallbackLink = androidDawnload;
+                    window.location = androidScheme;
+                }
             }
-            else if(isAndroid) {
-                window.location = androidScheme;
-
-                fallbackLink = androidDawnload;
-            }
-
-            var timeoutId = window.setTimeout(function() {
+            catch(err) {
+                window.setTimeout(function() {
                     window.location.replace(fallbackLink);
-            }, 500);
-
-            // Cancel the timeout if the user stays on the page.
-            window.onbeforeunload = function() {
-                clearTimeout(timeoutId);
-            };
+                }, 500);
+            }
         }
         
     </script>
