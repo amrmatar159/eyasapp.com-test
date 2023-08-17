@@ -42,37 +42,27 @@
 
         function checkAppInstallation() {
             if (deviceType === 'iOS') {
-                chk(iosScheme).then( res => {
-                    if(res.ok) {
-                        window.location.href = iosScheme;
-                    }
-                }).catch( err => {
+                try {
+                    window.location.href = iosScheme;
+                }
+                catch(error) {
                     window.location.href = iosDawnload;
-                });
+                }
             } else if (deviceType === 'Android') {
-                chk(androidScheme).then( res => {
-                    if(res.ok) {
-                        window.location.href = androidDawnload;
-                    }
-                }).catch( err => {
+                try {
+                    window.location.href = androidScheme;
+                }
+                catch(error) {
                     window.location.href = androidDawnload;
-                });
+                }
             }
         }
 
-        function chk(target) {
-            return new Promise((res, rej) => {                       
-
-                (function rec(i) {                                   
-                    fetch(target, {mode: 'no-cors', method:'HEAD'}).then((r) => {  
-                        res(r);                                     
-                    }).catch( err => {                      
-                            return rej(err);                  
-                    });                                       
-                })(1);
-
-            });
-        }
+        // function handleUrlChange(dawnloadLink) {
+        //     if(!window.location.href.includes('geo') || !window.location.href.includes('eyasapp')) {
+        //         window.location.href = dawnloadLink;
+        //     }
+        // }
         
     </script>
 </body>
