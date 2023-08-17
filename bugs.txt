@@ -1,0 +1,8 @@
+Android: 
+ - Opens playstore if the app is installed  or not,
+ if the app is installed the app open after play store opens directly!
+ ------------------
+iPhone:
+ - Opens the app well if it's installed.
+ - give a message "safari cannot open the page because the address is invalid" when app is not installed,
+ then opens app store
