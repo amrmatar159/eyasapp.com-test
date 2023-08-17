@@ -47,16 +47,11 @@
         function openScheme(scheme) {
             iframe.src = scheme;
 
-            var timer = setTimeout(function() {
+            setTimeout(function() {
             if (!isSchemeOpened) {
                 handleFallback();
             }
             }, 1000);
-
-            iframe.onload = function() {
-            clearTimeout(timer);
-            isSchemeOpened = true;
-            };
         }
 
         function handleFallback() {
