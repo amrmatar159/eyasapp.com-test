@@ -10,8 +10,6 @@
 <body>
     <div class="container">
         <div class="p-4 mt-4 bg-light rounded border">
-            <p class="display-4 mt-2 mb-2" id="deviceInfo">Checking device type...</p>
-
             <h1 style="font-size: 2rem;"
             class="btn btn-primary w-100 p-4 fw-bold mt-2 rounded-pill" onclick="checkAppInstallation()">Dawnload Eyas Users</h1>
         </div>
@@ -29,25 +27,26 @@
         var iosScheme = "EyasUser://";
         var iosDawnload = "https://apps.apple.com/us/app/id1457498410";
 
+        var linkOpenedSuccessfully = false;
+        window.onerror = function() {
+            linkOpenedSuccessfully = true;
+        };
         function checkAppInstallation() {
             var fallbackLink = '';
 
-            try {
-                if (isiOS) {
+            if (isiOS) {
                 fallbackLink = iosDawnload;
                 window.location = iosScheme;
+            } else if (isAndroid) {
+                fallbackLink = androidDawnload;
+                window.location = androidScheme;
+            }
 
+            window.setTimeout(function() {
+                if (!linkOpenedSuccessfully) {
+                window.open('https://www.google.com/');
                 }
-                else if(isAndroid) {
-                    fallbackLink = androidDawnload;
-                    window.location = androidScheme;
-                }
-            }
-            catch(err) {
-                window.setTimeout(function() {
-                    window.location.replace(fallbackLink);
-                }, 500);
-            }
+            }, 500);
         }
         
     </script>
