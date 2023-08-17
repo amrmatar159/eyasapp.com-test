@@ -31,15 +31,14 @@
 
         function checkAppInstallation() {
             var fallbackLink = '';
-            var iFrame = document.getElementById('loader').src;
 
             if (isiOS) {
-                iFrame = iosScheme;
+                window.location = iosScheme;
 
                 fallbackLink = iosDawnload;
             }
             else if(isAndroid) {
-                iFrame = androidScheme;
+                window.location = androidScheme;
 
                 fallbackLink = androidDawnload;
             }
