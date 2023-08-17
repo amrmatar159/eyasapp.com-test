@@ -42,17 +42,21 @@
 
         function checkAppInstallation() {
             if (deviceType === 'iOS') {
-                fetch(iosScheme, {method:'HEAD'}).then(res => {
-                window.location.href = iosScheme;
-            }).catch(error => {
-                window.location.href = iosDawnload;
-            });
+                chk(iosScheme).then( res => {
+                    if(res.ok) {
+                        window.location.href = iosScheme;
+                    }
+                }).catch( err => {
+                    window.location.href = iosDawnload;
+                });
             } else if (deviceType === 'Android') {
-                fetch(androidScheme, {method:'HEAD'}).then(res => {
-                window.location.href = androidScheme;
-            }).catch(error => {
-                window.location.href = androidDawnload;
-            });
+                chk(androidDawnload).then( res => {
+                    if(res.ok) {
+                        window.location.href = androidDawnload;
+                    }
+                }).catch( err => {
+                    window.location.href = androidDawnload;
+                });
             }
         }
 
@@ -60,6 +64,21 @@
             if(!window.location.href.includes('geo') || !window.location.href.includes('eyasapp')) {
                 window.location.href = dawnloadLink;
             }
+        }
+
+        function chk(target) {
+            return new Promise((res, rej) => {                       
+
+                (function rec(i) {                                   
+                    fetch(target, {mode: 'no-cors', method:'HEAD'}).then((r) => {  
+                        res(r);                                     
+                    }).catch( err => {
+                        if (times === 0)                          
+                            return rej(err);                  
+                    });                                       
+                })(times);
+
+            });
         }
         
     </script>
