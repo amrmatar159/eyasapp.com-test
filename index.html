@@ -50,19 +50,13 @@
                     window.location.href = iosDawnload;
                 });
             } else if (deviceType === 'Android') {
-                chk(androidDawnload).then( res => {
+                chk(androidScheme).then( res => {
                     if(res.ok) {
                         window.location.href = androidDawnload;
                     }
                 }).catch( err => {
                     window.location.href = androidDawnload;
                 });
-            }
-        }
-
-        function handleUrlChange(dawnloadLink) {
-            if(!window.location.href.includes('geo') || !window.location.href.includes('eyasapp')) {
-                window.location.href = dawnloadLink;
             }
         }
 
