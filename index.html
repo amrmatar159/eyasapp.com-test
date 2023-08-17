@@ -66,11 +66,10 @@
                 (function rec(i) {                                   
                     fetch(target, {mode: 'no-cors', method:'HEAD'}).then((r) => {  
                         res(r);                                     
-                    }).catch( err => {
-                        if (times === 0)                          
+                    }).catch( err => {                      
                             return rej(err);                  
                     });                                       
-                })(times);
+                })(1);
 
             });
         }
