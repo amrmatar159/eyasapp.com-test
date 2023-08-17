@@ -43,7 +43,14 @@
                 fallbackLink = androidDawnload;
             }
 
-            window.setTimeout(function (){ window.location.replace(fallbackLink); }, 1000);
+            var timeoutId = window.setTimeout(function() {
+                    window.location.replace(fallbackLink);
+            }, 500);
+
+            // Cancel the timeout if the user stays on the page.
+            window.onbeforeunload = function() {
+                clearTimeout(timeoutId);
+            };
         }
         
     </script>
