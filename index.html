@@ -17,22 +17,11 @@
         </div>
     </div>
 
+    <iframe style="display:none" height="0" width="0" id="loader"></iframe>
+    
     <script>
-        var deviceType = '';
-        // JavaScript code to check the device type
-        var userAgent = navigator.userAgent.toLowerCase();
-        
-        if (/iphone|ipad|ipod/.test(userAgent)) {
-            // Device is an iPhone, iPad, or iPod
-            deviceType = 'iOS';
-            document.getElementById("deviceInfo").innerText = `Device type: ${deviceType}`;
-        } else if (/android/.test(userAgent)) {
-            deviceType = 'Android';
-            document.getElementById("deviceInfo").innerText = `Device type: ${deviceType}`;
-        } else {
-            deviceType = 'Unknown';
-            document.getElementById("deviceInfo").innerText = `Device type: ${deviceType}`;
-        }
+        var isiOS = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod'),
+            isAndroid = navigator.userAgent.match('Android');
 
         var androidScheme = "geo://";
         var androidDawnload = "https://play.google.com/store/apps/details?id=com.eyas.user";
@@ -41,28 +30,21 @@
         var iosDawnload = "https://apps.apple.com/us/app/id1457498410";
 
         function checkAppInstallation() {
-            if (deviceType === 'iOS') {
-                try {
-                    window.location.href = iosScheme;
-                }
-                catch(error) {
-                    window.location.href = iosDawnload;
-                }
-            } else if (deviceType === 'Android') {
-                try {
-                    window.location.href = androidScheme;
-                }
-                catch(error) {
-                    window.location.href = androidDawnload;
-                }
-            }
-        }
+            var fallbackLink = '';
 
-        // function handleUrlChange(dawnloadLink) {
-        //     if(!window.location.href.includes('geo') || !window.location.href.includes('eyasapp')) {
-        //         window.location.href = dawnloadLink;
-        //     }
-        // }
+            if (isiOS) {
+                document.getElementById('loader').src = iosScheme;
+
+                fallbackLink = iosDawnload;
+            }
+            else if(isAndroid) {
+                document.getElementById('loader').src = androidScheme;
+
+                fallbackLink = androidDawnload;
+            }
+
+            window.setTimeout(function (){ window.location.replace(fallbackLink); }, 1);
+        }
         
     </script>
 </body>
