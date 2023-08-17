@@ -19,11 +19,10 @@
 
     <script>
         var fallbackLink = '';
-        var isSchemeOpened = false;
-        var iframe = document.querySelector('#openScheme');
-        iframe.onload = function() {
-            isSchemeOpened = true;
-        };
+        var isSchemeOpened = true;
+        window.onerror = function() {
+            isSchemeOpened = false;
+        }
 
         var isiOS = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod'),
             isAndroid = navigator.userAgent.match('Android');
@@ -45,13 +44,13 @@
         }
 
         function openScheme(scheme) {
-            iframe.src = scheme;
+            window.location.href = scheme;
 
             setTimeout(function() {
             if (!isSchemeOpened) {
                 handleFallback();
             }
-            }, 1000);
+            }, 500);
         }
 
         function handleFallback() {
