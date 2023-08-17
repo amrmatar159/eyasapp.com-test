@@ -15,7 +15,17 @@
         </div>
     </div>
 
+    <iframe frameborder="0" height="0" width="0" id="openScheme"></iframe>
+
     <script>
+        var fallbackLink = '';
+        var isSchemeOpened = false;
+        var iframe = document.querySelector('#openScheme');
+        iframe.onload = function() {
+            clearTimeout(timer);
+            isSchemeOpened = true;
+        };
+
         var isiOS = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod'),
             isAndroid = navigator.userAgent.match('Android');
 
@@ -24,23 +34,18 @@
 
         var iosScheme = "EyasUser://";
         var iosDawnload = "https://apps.apple.com/us/app/id1457498410";
-        
-        function checkAppInstallation() {
-        var fallbackLink = '';
-        var isSchemeOpened = false;
 
-        if (isiOS) {
-            fallbackLink = iosDawnload;
-            openScheme(iosScheme);
-        } else if (isAndroid) {
-            fallbackLink = androidDawnload;
-            openScheme(androidScheme);
+        function checkAppInstallation() {
+            if (isiOS) {
+                fallbackLink = iosDawnload;
+                openScheme(iosScheme);
+            } else if (isAndroid) {
+                fallbackLink = androidDawnload;
+                openScheme(androidScheme);
+            }
         }
 
         function openScheme(scheme) {
-            var iframe = document.createElement('iframe');
-            document.body.appendChild(iframe);
-            iframe.style.display = 'none';
             iframe.src = scheme;
 
             var timer = setTimeout(function() {
@@ -57,7 +62,6 @@
 
         function handleFallback() {
             window.location.replace(fallbackLink);
-        }
         }
         
     </script>
