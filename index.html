@@ -47,9 +47,9 @@
             window.location.href = scheme;
 
             setTimeout(function() {
-            // if (!isSchemeOpened) {
+            if (!isSchemeOpened) {
                 handleFallback();
-            // }
+            }
             }, 500);
         }
 
