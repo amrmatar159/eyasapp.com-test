@@ -20,9 +20,9 @@
     <script>
         var fallbackLink = '';
         var isSchemeOpened = false;
-        window.onerror = function() {
-            isSchemeOpened = false;
-        }
+        window.addEventListener('blur', function() {
+            isSchemeOpened = true;
+        });
 
         var isiOS = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod'),
             isAndroid = navigator.userAgent.match('Android');
