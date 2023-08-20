@@ -19,7 +19,7 @@
 
     <script>
         var fallbackLink = '';
-        var isSchemeOpened = true;
+        var isSchemeOpened = false;
         window.onerror = function() {
             isSchemeOpened = false;
         }
@@ -47,9 +47,9 @@
             window.location.href = scheme;
 
             setTimeout(function() {
-            if (!isSchemeOpened) {
+            // if (!isSchemeOpened) {
                 handleFallback();
-            }
+            // }
             }, 500);
         }
 
