@@ -34,14 +34,14 @@
         function checkAppInstallation() {
             if (isiOS) {
                 fallbackLink = iosDawnload;
-                openIosScheme(iosScheme);
+                openScheme(iosScheme);
             } else if (isAndroid) {
                 fallbackLink = androidDawnload;
-                openAndroidScheme(androidScheme);
+                openScheme(androidScheme);
             }
         }
 
-        function openAndroidScheme(scheme) {
+        function openScheme(scheme) {
             window.location.href = scheme;
 
             setTimeout(function() {
@@ -49,18 +49,6 @@
                 handleFallback();
             }
             }, 500);
-        }
-
-        let prodUrl = "https://amrmatar159.github.io/eyasapp.com-test/";
-
-        function openIosScheme(scheme) {
-            window.location.href = scheme;
-
-            setTimeout(function() {
-            if (window.location == prodUrl) {
-                handleFallback();
-            }
-            }, 700);
         }
 
         function handleFallback() {
