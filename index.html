@@ -16,45 +16,46 @@
     </div>
     
     <script>
-        var fallbackLink = '';
         var isSchemeOpened = false;
-        window.addEventListener('blur', function() {
+        var isFallbackTriggered = false;
+    
+        window.addEventListener('blur', function () {
             isSchemeOpened = true;
         });
-
-        var isiOS = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod'),
-            isAndroid = navigator.userAgent.match('Android');
-
-        var androidScheme = "geo://";
-        var androidDawnload = "https://play.google.com/store/apps/details?id=com.eyas.user";
-
-        var iosScheme = "EyasUser://";
-        var iosDawnload = "https://apps.apple.com/us/app/id1457498410";
-
+    
+        var isiOS = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod');
+        var isAndroid = navigator.userAgent.match('Android');
+    
+        var scheme = {
+            android: "geo://",
+            ios: "EyasUser://"
+        }
+    
         function checkAppInstallation() {
             if (isiOS) {
-                fallbackLink = iosDawnload;
-                openScheme(iosScheme);
+                openScheme(scheme.ios);
             } else if (isAndroid) {
-                fallbackLink = androidDawnload;
-                openScheme(androidScheme);
+                openScheme(scheme.android);
             }
+    
+            // Set a timer to check if the scheme has opened
+            setTimeout(function () {
+                if (!isSchemeOpened && !isFallbackTriggered) {
+                    handleFallback();
+                }
+            }, 2000); // You can adjust the timeout as needed
         }
-
+    
         function openScheme(scheme) {
             window.location.href = scheme;
-
-            setTimeout(function() {
-            if (!isSchemeOpened) {
-                handleFallback();
-            }
-            }, 500);
         }
-
+    
         function handleFallback() {
+            var fallbackLink = "https://onelink.to/jyvz78";
+            // var fallbackLink = "http://127.0.0.1:5500/index.html";
             window.location.replace(fallbackLink);
+            isFallbackTriggered = true;
         }
-        
     </script>
 </body>
 </html>
